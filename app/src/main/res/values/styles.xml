@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Change tracking activity's theme to remove default ActionBar. -->
+    <style name="TrackingActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- We will be using the toolbar so no need to show ActionBar -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/edtActionId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Action id"
+        android:inputType="phone" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnAddAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Action" />
+
+        <Button
+            android:id="@+id/btnTrack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Parent Track" />
+    </FrameLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvActions"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="LinearLayoutManager">
+
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

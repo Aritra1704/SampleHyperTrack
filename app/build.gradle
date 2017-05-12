@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "com.arpaul.samplehypertrack"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.google.android.gms:play-services-maps:10.2.0'
+    testCompile 'junit:junit:4.12'
+
+    /**
+     * HyperTrack SDKs are shipped as @aar formats. Include the HyperTrack SDK's
+     * latest version as specified below. For detailed SDK changelog, Refer to
+     * https://docs.hypertrack.com/sdks/android/changelog.html.
+     *
+     * transitive = true, enables the SDK to include its internal dependencies
+     * automatically. Refer here for more info on HyperTrack SDK dependencies.
+     */
+    compile('com.hypertrack:android:0.2.1:release@aar') {
+        transitive = true;
+    }
+
+}

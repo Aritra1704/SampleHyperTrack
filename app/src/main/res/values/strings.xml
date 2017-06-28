@@ -1,6 +1,11 @@
 <resources>
-    <string name="app_name">SampleHyperTrack</string>
+    <string name="app_name">TrackRoute</string>
     <string name="title_activity_maps">Map</string>
     <string name="enable_location_settings">Enable location settings.</string>
+    <string name="title_activity_track_action">TrackActionActivity</string>
 
+    <string name="track">Track</string>
+    <string name="enter_action_id">Enter Action ID</string>
+    <string name="retry">Retry</string>
+    <string name="cd_preferred_location">Preferred location marker</string>
 </resources>

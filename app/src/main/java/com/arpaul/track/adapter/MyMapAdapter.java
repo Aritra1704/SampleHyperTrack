@@ -1,8 +1,8 @@
-package com.arpaul.samplehypertrack.adapter;
+package com.arpaul.track.adapter;
 
 import android.content.Context;
 
-import com.arpaul.samplehypertrack.R;
+import com.arpaul.track.R;
 import com.hypertrack.lib.HyperTrackMapAdapter;
 import com.hypertrack.lib.HyperTrackMapFragment;
 

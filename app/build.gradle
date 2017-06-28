@@ -1,33 +1,68 @@
 apply plugin: 'com.android.application'
 
+// Create a variable called keystorePropertiesFile, and initialize it to your
+// keystore.properties file, in the rootProject folder.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+
+// Initialize a new Properties() object called keystoreProperties.
+def keystoreProperties = new Properties()
+
+// Load your keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 android {
+    signingConfigs {
+        config {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
     defaultConfig {
-        applicationId "com.arpaul.samplehypertrack"
+        applicationId "com.arpaul.track"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+    }
+    signingConfigs {
+        release {
+            storeFile file("../utils/TrackRoute_keystore.jks")
+            storePassword "track1234"
+            keyAlias "TrackRoute"
+            keyPassword "track1234"
+        }
     }
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.debug
+            buildConfigField("String", "API_KEY", "\"${test_api_key}\"")
+            versionNameSuffix '-DEBUG'
+        }
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+            signingConfig signingConfigs.release
+            buildConfigField("String", "API_KEY", "\"${prod_api_key}\"")
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.0'
-    compile 'com.google.android.gms:play-services-maps:10.2.0'
-    testCompile 'junit:junit:4.12'
-
     /**
      * HyperTrack SDKs are shipped as @aar formats. Include the HyperTrack SDK's
      * latest version as specified below. For detailed SDK changelog, Refer to
@@ -39,5 +74,15 @@ dependencies {
     compile('com.hypertrack:android:0.2.1:release@aar') {
         transitive = true;
     }
-
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.google.android.gms:play-services-maps:10.2.0'
+    compile 'com.github.Aritra1704:UtilitiesJitPackLib:1.18'
+    compile 'com.github.Aritra1704:LocationFinder:1.5'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:design:25.3.0'
+    testCompile 'junit:junit:4.12'
+    compile 'com.github.Aritra1704:UtilitiesJitPackLib:1.18'
+    compile 'com.google.code.gson:gson:2.8.1'
+    compile 'com.squareup.okhttp3:okhttp:3.4.2'
+    compile 'com.android.support:multidex:1.0.0'
 }

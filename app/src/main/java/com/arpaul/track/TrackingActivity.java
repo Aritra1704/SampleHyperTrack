@@ -1,11 +1,11 @@
-package com.arpaul.samplehypertrack;
+package com.arpaul.track;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.arpaul.samplehypertrack.adapter.MyMapAdapter;
+import com.arpaul.track.adapter.MyMapAdapter;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.Marker;
 import com.hypertrack.lib.HyperTrackMapFragment;

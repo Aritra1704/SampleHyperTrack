@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.arpaul.samplehypertrack">
+    package="com.arpaul.track">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -12,9 +12,12 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.arpaul.samplehypertrack.common.ApplicationInstance"
+        android:name=".common.ApplicationInstance"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -33,37 +36,52 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/app_name">
-        </activity>
-
+            android:label="@string/app_name" />
         <activity
             android:name=".NavigateActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" />
+        <activity
+            android:name=".TrackActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".TrackLogoutActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".ParentActivity"
+            android:label="@string/app_name"
+            android:theme="@style/TrackingActivityTheme" />
+        <activity
+            android:name=".TrackActionActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".TrackActivity"
-            android:label="@string/app_name">
-        </activity>
-
-        <activity
-            android:name=".TrackLogoutActivity"
-            android:label="@string/app_name">
-        </activity>
-
-        <activity
-            android:name=".ParentActivity"
+            android:name=".YourMapActivity"
             android:label="@string/app_name"
-            android:theme="@style/TrackingActivityTheme">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <provider
+            android:name=".dataAccess.ContentProviderHelper"
+            android:authorities="com.arpaul.track.dataAccess.ContentProviderHelper"
+            android:exported="false"
+            android:syncable="true" />
+
+        <service
+            android:name=".services.TrackService"
+            android:enabled="true"
+            android:exported="true" />
+
     </application>
 
 </manifest>

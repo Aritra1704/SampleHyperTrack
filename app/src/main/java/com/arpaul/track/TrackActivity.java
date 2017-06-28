@@ -1,4 +1,4 @@
-package com.arpaul.samplehypertrack;
+package com.arpaul.track;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -109,8 +109,10 @@ public class TrackActivity extends AppCompatActivity {
                         // HyperTrack SDK auto-configures UserId on createUser API call,
                         // so no need to call HyperTrack.setUserId() API
 
+//                        user.getId();
+                        Toast.makeText(TrackActivity.this, user.getId(), Toast.LENGTH_SHORT).show();
                         // On UserLogin success
-                        onUserLoginSuccess();
+                        onUserLoginSuccess(user.getId());
                     }
 
                     @Override
@@ -125,7 +127,7 @@ public class TrackActivity extends AppCompatActivity {
     /**
      * Call this method when user has successfully logged in
      */
-    private void onUserLoginSuccess() {
+    private void onUserLoginSuccess(final String userid) {
         HyperTrack.startTracking(new HyperTrackCallback() {
             @Override
             public void onSuccess(@NonNull SuccessResponse successResponse) {
@@ -135,6 +137,7 @@ public class TrackActivity extends AppCompatActivity {
 
                 // Start User Session by starting MainActivity
                 Intent mainActivityIntent = new Intent(TrackActivity.this, TrackLogoutActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                mainActivityIntent.putExtra("userid", userid);
                 startActivity(mainActivityIntent);
                 finish();
             }

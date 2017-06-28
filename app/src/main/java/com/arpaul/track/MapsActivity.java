@@ -1,4 +1,4 @@
-package com.arpaul.samplehypertrack;
+package com.arpaul.track;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;

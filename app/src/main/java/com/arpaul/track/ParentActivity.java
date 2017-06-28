@@ -1,4 +1,4 @@
-package com.arpaul.samplehypertrack;
+package com.arpaul.track;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.arpaul.samplehypertrack.adapter.ActionAdapter;
+import com.arpaul.track.adapter.ActionAdapter;
 import com.hypertrack.lib.HyperTrack;
 import com.hypertrack.lib.callbacks.HyperTrackCallback;
 import com.hypertrack.lib.models.Action;
@@ -84,7 +84,7 @@ public class ParentActivity extends AppCompatActivity {
             @Override
             public void onError(@NonNull ErrorResponse errorResponse) {
                 // Handle trackAction error here
-                Toast.makeText(ParentActivity.this, "Error..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParentActivity.this, "Error.." + errorResponse.getErrorMessage().toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }

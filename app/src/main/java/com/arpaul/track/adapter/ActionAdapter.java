@@ -1,4 +1,4 @@
-package com.arpaul.samplehypertrack.adapter;
+package com.arpaul.track.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.arpaul.samplehypertrack.R;
+import com.arpaul.track.R;
 
 import java.util.ArrayList;
 import java.util.List;
